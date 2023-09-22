@@ -10,17 +10,17 @@ import (
 var flag = 0
 
 func add() {
-	time.Sleep(10)
+	time.Sleep(0)
 	log.Printf("%d === %d", getGoId(), flag)
 	flag++
 }
 
 func TestBackupper_DoRun(t *testing.T) {
-	b := Backupper {
+	b := Backupper{
 		state: 0,
 		Run:   add,
 	}
-	wg := sync.WaitGroup {}
+	wg := sync.WaitGroup{}
 	for i := 0; i < 1000; i++ {
 		wg.Add(1)
 		go func(backupper *Backupper) {

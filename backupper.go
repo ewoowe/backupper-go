@@ -34,6 +34,7 @@ func (b *Backupper) DoRun() {
 				if atomic.CompareAndSwapInt32(&b.state, Running, NoRunning) {
 					break
 				}
+				// cas fail，state must be RunningBackup now，set state to NoRunning to continue while
 				atomic.StoreInt32(&b.state, NoRunning)
 			}
 		} else if b.state == Running {
